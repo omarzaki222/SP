@@ -3,7 +3,7 @@
   hosts: localhost
   connection: local
   tasks:
-- name: stop current running container if it exists
+    - name: stop current running container if it exists
       command: docker stop web-container
       ignore_errors: yes
 
@@ -12,7 +12,7 @@
       ignore_errors: yes
 
     - name: remove comingsoon-image if it exists
-      command:  docker rmi triple3a/comingsoon-page:latest
+      command: docker rmi triple3a/comingsoon-page:latest
       ignore_errors: yes
 
     - name: build docker image using the Dockerfile
@@ -23,4 +23,3 @@
 
     - name: run container
       command: docker run -d --name web-container -p 5000:80 triple3a/comingsoon-page
-
